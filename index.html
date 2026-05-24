@@ -119,6 +119,10 @@ section { padding: 96px 0; position: relative; }
 .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .btn-sub { width: 100%; padding: 14px; background: var(--navy); color: var(--white); border: none; border-radius: 6px; font-family: var(--sans); font-size: 15px; font-weight: 500; cursor: pointer; transition: background var(--t); margin-top: 6px; }
 .btn-sub:hover { background: var(--navy2); }
+.form-success { display: none; text-align: center; padding: 32px 20px; }
+.form-success .check { font-size: 40px; margin-bottom: 12px; }
+.form-success h3 { font-family: var(--serif); font-size: 22px; color: var(--navy); margin-bottom: 8px; }
+.form-success p { font-size: 14px; color: var(--muted); }
 .c-detail { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--cream3); }
 .c-detail:last-of-type { border-bottom: none; }
 .c-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -210,7 +214,7 @@ footer .l-bottom { color: var(--white) !important; }
       <div class="hero-stats">
         <div class="hero-stat"><div class="s-num">8+</div><div class="s-label">Years in IT</div></div>
         <div class="stat-div"></div>
-        <div class="hero-stat"><div class="s-num">Days</div><div class="s-label">Not months, to launch</div></div>
+        <div class="hero-stat"><div class="s-num">3–7</div><div class="s-label">Days to launch</div></div>
         <div class="stat-div"></div>
         <div class="hero-stat"><div class="s-num">Local</div><div class="s-label">North Atlanta based</div></div>
       </div>
@@ -362,19 +366,28 @@ footer .l-bottom { color: var(--white) !important; }
         </div>
       </div>
       <div class="contact-form-wrap">
-        <div class="form-title">Book your free consultation</div>
-        <div class="fg-row">
-          <div class="fg"><label>First name</label><input type="text" placeholder="Pastor John"></div>
-          <div class="fg"><label>Last name</label><input type="text" placeholder="Smith"></div>
+        <div id="form-fields">
+          <div class="form-title">Book your free consultation</div>
+          <form action="https://formspree.io/f/mlgvwnww" method="POST" id="consultation-form">
+            <div class="fg-row">
+              <div class="fg"><label>First name</label><input type="text" name="first_name" placeholder="Pastor John" required></div>
+              <div class="fg"><label>Last name</label><input type="text" name="last_name" placeholder="Smith" required></div>
+            </div>
+            <div class="fg"><label>Email</label><input type="email" name="email" placeholder="john@yourministry.org" required></div>
+            <div class="fg"><label>Phone (optional)</label><input type="tel" name="phone" placeholder="(770) 555-0100"></div>
+            <div class="fg">
+              <label>I am a...</label>
+              <select name="client_type"><option value="">Select one</option><option>Church / Ministry</option><option>Small Business</option><option>Non-profit</option><option>Other</option></select>
+            </div>
+            <div class="fg"><label>What do you need help with?</label><textarea name="message" placeholder="Tell me a bit about where you're at — website, streaming, Google listing, email, or something else..."></textarea></div>
+            <button type="submit" class="btn-sub">Send — I'll respond within 24 hours</button>
+          </form>
         </div>
-        <div class="fg"><label>Email</label><input type="email" placeholder="john@yourministry.org"></div>
-        <div class="fg"><label>Phone (optional)</label><input type="tel" placeholder="(770) 555-0100"></div>
-        <div class="fg">
-          <label>I am a...</label>
-          <select><option value="">Select one</option><option>Church / Ministry</option><option>Small Business</option><option>Non-profit</option><option>Other</option></select>
+        <div class="form-success" id="form-success">
+          <div class="check">✝</div>
+          <h3>Message received!</h3>
+          <p>Thanks for reaching out. Lindsey will be in touch within 24 hours.</p>
         </div>
-        <div class="fg"><label>What do you need help with?</label><textarea placeholder="Tell me a bit about where you're at — website, streaming, Google listing, email, or something else..."></textarea></div>
-        <button class="btn-sub">Send — I'll respond within 24 hours</button>
       </div>
     </div>
   </div>
@@ -404,6 +417,37 @@ footer .l-bottom { color: var(--white) !important; }
     </div>
   </div>
 </footer>
+
+<script>
+  const form = document.getElementById('consultation-form');
+  const formFields = document.getElementById('form-fields');
+  const formSuccess = document.getElementById('form-success');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('.btn-sub');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        formFields.style.display = 'none';
+        formSuccess.style.display = 'block';
+      } else {
+        btn.textContent = 'Something went wrong — please try again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Something went wrong — please try again';
+      btn.disabled = false;
+    }
+  });
+</script>
 
 </body>
 </html>
