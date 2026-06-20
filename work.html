@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Work — Bethlehem Built</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+.work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 56px; }
+.work-card { background: var(--white); border: 1px solid var(--cream3); border-radius: 16px; overflow: hidden; transition: transform var(--t), box-shadow var(--t); display: flex; flex-direction: column; }
+.work-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(26,46,74,0.1); }
+.work-preview { padding: 16px; border-bottom: 1px solid var(--cream3); background: var(--cream2); }
+.preview-browser { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(26,46,74,0.08); }
+.preview-bar { background: var(--cream2); padding: 7px 10px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid var(--cream3); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cream3); }
+.preview-url { font-family: var(--mono); font-size: 10px; color: var(--muted2); margin-left: 6px; }
+.preview-body { padding: 12px; min-height: 180px; }
+.mcc-body { background: #0a0a0a; }
+.pb-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.pb-logo-dot { width: 10px; height: 10px; border-radius: 50%; background: #B07D2E; display: inline-block; margin-right: 4px; }
+.pb-logo-text { font-size: 9px; color: #fff; font-weight: 600; letter-spacing: 0.05em; }
+.pb-nav-links { font-size: 8px; color: rgba(255,255,255,0.4); }
+.pb-eyebrow { font-size: 8px; color: #B07D2E; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
+.pb-h1 { font-family: var(--serif); font-size: 13px; color: #fff; line-height: 1.3; margin-bottom: 6px; }
+.pb-h1 em { color: #B07D2E; font-style: italic; }
+.pb-sub { font-size: 8px; color: rgba(255,255,255,0.5); line-height: 1.5; margin-bottom: 10px; }
+.pb-btns { display: flex; gap: 8px; margin-bottom: 12px; }
+.pb-btn-p { background: #B07D2E; color: #fff; font-size: 8px; padding: 4px 8px; border-radius: 3px; }
+.pb-btn-s { font-size: 8px; color: rgba(255,255,255,0.6); padding: 4px 0; }
+.pb-cards-row { display: flex; gap: 6px; }
+.pb-mini-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 6px 8px; font-size: 8px; color: rgba(255,255,255,0.7); text-align: center; flex: 1; line-height: 1.6; }
+.bb-body { background: #FAF7F0; }
+.bb-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.bb-logo-mark { display: flex; align-items: center; gap: 5px; }
+.bb-stats-row { display: flex; align-items: center; gap: 10px; padding-top: 10px; border-top: 1px solid #E8DFD0; }
+.bb-stat { text-align: center; flex: 1; }
+.bb-stat strong { display: block; font-family: var(--serif); font-size: 12px; color: #1A2E4A; line-height: 1; }
+.bb-stat small { font-size: 7px; color: #A89880; text-transform: uppercase; letter-spacing: 0.06em; }
+.bb-stat-div { width: 1px; height: 24px; background: #E8DFD0; }
+.work-info { padding: 24px 28px 28px; flex: 1; display: flex; flex-direction: column; }
+.work-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.work-name { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+.work-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 16px; flex: 1; }
+.work-details { border-top: 1px solid var(--cream2); border-bottom: 1px solid var(--cream2); padding: 12px 0; margin-bottom: 16px; display: flex; flex-direction: column; gap: 6px; }
+.work-detail-item { display: flex; justify-content: space-between; font-size: 12px; }
+.wd-label { color: var(--muted2); text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; }
+.wd-val { color: var(--navy); font-weight: 500; }
+.work-link { font-size: 13px; font-weight: 500; color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 1px; align-self: flex-start; transition: color var(--t); }
+.work-link:hover { color: var(--navy); border-color: var(--navy); }
+.work-card-cta { background: var(--navy); border-color: rgba(176,125,46,0.2); }
+.work-cta-inner { padding: 32px 28px; display: flex; flex-direction: column; height: 100%; min-height: 460px; }
+.cta-icon { margin-bottom: 20px; }
+.cta-perks { display: flex; flex-direction: column; gap: 8px; margin: 20px 0 28px; }
+.cta-perk { font-size: 13px; color: rgba(255,255,255,0.7); }
+.work-link-cta { display: inline-flex; align-items: center; background: var(--gold); color: var(--white); padding: 12px 20px; border-radius: 4px; font-size: 14px; font-weight: 500; text-decoration: none; transition: background var(--t); align-self: flex-start; margin-top: auto; }
+.work-link-cta:hover { background: var(--gold-light); }
+@media (max-width: 680px) { .work-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/" class="logo-mark">
+        <svg class="logo-icon" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <mask id="mn"><rect x="40" y="6" width="8" height="16" fill="white"><animate attributeName="height" from="0" to="16" dur="0.3s" begin="0.6s" fill="freeze"/><animate attributeName="y" from="22" to="6" dur="0.3s" begin="0.6s" fill="freeze"/></rect></mask>
+            <mask id="me"><rect x="62" y="40" width="16" height="8" fill="white"><animate attributeName="width" from="0" to="16" dur="0.3s" begin="0.8s" fill="freeze"/></rect></mask>
+            <mask id="ms"><rect x="40" y="62" width="8" height="16" fill="white"><animate attributeName="height" from="0" to="16" dur="0.3s" begin="1.0s" fill="freeze"/></rect></mask>
+            <mask id="mw"><rect x="10" y="40" width="16" height="8" fill="white"><animate attributeName="width" from="0" to="16" dur="0.3s" begin="1.2s" fill="freeze"/><animate attributeName="x" from="26" to="10" dur="0.3s" begin="1.2s" fill="freeze"/></rect></mask>
+          </defs>
+          <rect width="88" height="88" rx="16" fill="#1A2E4A"><animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="0s" fill="freeze"/></rect>
+          <rect x="6" y="6" width="76" height="76" rx="10" fill="none" stroke="#B07D2E" stroke-width="0.7" opacity="0.35"><animate attributeName="opacity" from="0" to="0.35" dur="0.4s" begin="0.15s" fill="freeze"/></rect>
+          <polygon transform-origin="44 44" points="44,22 47,36 60,27 51,39 66,44 51,49 60,61 47,52 44,66 41,52 28,61 37,49 22,44 37,39 28,27 41,36" fill="#B07D2E"><animateTransform attributeName="transform" type="scale" from="0" to="1" dur="0.5s" begin="0.2s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1" additive="sum"/></polygon>
+          <line x1="44" y1="22" x2="44" y2="14" stroke="#D4A24E" stroke-width="1.6" stroke-linecap="round" mask="url(#mn)"/>
+          <circle cx="44" cy="9" r="4" fill="#D4A24E"><animate attributeName="opacity" from="0" to="1" dur="0.2s" begin="0.9s" fill="freeze"/><animate attributeName="r" from="0" to="4" dur="0.2s" begin="0.9s" fill="freeze"/></circle>
+          <line x1="38" y1="9" x2="50" y2="9" stroke="#D4A24E" stroke-width="1" stroke-linecap="round" opacity="0"><animate attributeName="opacity" from="0" to="0.5" dur="0.2s" begin="0.95s" fill="freeze"/></line>
+          <line x1="66" y1="44" x2="74" y2="44" stroke="#D4A24E" stroke-width="1.6" stroke-linecap="round" mask="url(#me)"/>
+          <circle cx="79" cy="44" r="4" fill="#D4A24E"><animate attributeName="opacity" from="0" to="1" dur="0.2s" begin="1.1s" fill="freeze"/><animate attributeName="r" from="0" to="4" dur="0.2s" begin="1.1s" fill="freeze"/></circle>
+          <line x1="79" y1="38" x2="79" y2="50" stroke="#D4A24E" stroke-width="1" stroke-linecap="round" opacity="0"><animate attributeName="opacity" from="0" to="0.5" dur="0.2s" begin="1.15s" fill="freeze"/></line>
+          <line x1="44" y1="66" x2="44" y2="74" stroke="#D4A24E" stroke-width="1.6" stroke-linecap="round" mask="url(#ms)"/>
+          <circle cx="44" cy="79" r="4" fill="#D4A24E"><animate attributeName="opacity" from="0" to="1" dur="0.2s" begin="1.3s" fill="freeze"/><animate attributeName="r" from="0" to="4" dur="0.2s" begin="1.3s" fill="freeze"/></circle>
+          <line x1="38" y1="79" x2="50" y2="79" stroke="#D4A24E" stroke-width="1" stroke-linecap="round" opacity="0"><animate attributeName="opacity" from="0" to="0.5" dur="0.2s" begin="1.35s" fill="freeze"/></line>
+          <line x1="22" y1="44" x2="14" y2="44" stroke="#D4A24E" stroke-width="1.6" stroke-linecap="round" mask="url(#mw)"/>
+          <circle cx="9" cy="44" r="4" fill="#D4A24E"><animate attributeName="opacity" from="0" to="1" dur="0.2s" begin="1.5s" fill="freeze"/><animate attributeName="r" from="0" to="4" dur="0.2s" begin="1.5s" fill="freeze"/></circle>
+          <line x1="9" y1="38" x2="9" y2="50" stroke="#D4A24E" stroke-width="1" stroke-linecap="round" opacity="0"><animate attributeName="opacity" from="0" to="0.5" dur="0.2s" begin="1.55s" fill="freeze"/></line>
+          <circle cx="44" cy="44" r="7" fill="#FAF7F0"><animate attributeName="r" from="0" to="7" dur="0.3s" begin="0.5s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/></circle>
+          <circle cx="44" cy="44" r="3.5" fill="#1A2E4A"><animate attributeName="r" from="0" to="3.5" dur="0.3s" begin="0.55s" fill="freeze"/></circle>
+        </svg>
+        <div class="logo-text" style="opacity:0;animation:fadeUp 0.5s 1.6s ease both;">
+          <span class="l-top">Bethlehem</span>
+          <span class="l-bottom">Built</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/story.html" data-page="story">Our Story</a></li>
+        <li><a href="/services.html" data-page="services">Services</a></li>
+        <li><a href="/work.html" data-page="work">Our Work</a></li>
+        <li><a href="/how.html" data-page="how">How It Works</a></li>
+        <li><a href="/contact.html" data-page="contact" class="nav-cta">Let's Talk</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="wrap">
+    <div class="s-label">Our Work</div>
+    <h1>Built with purpose.<br><em>Proven in the field.</em></h1>
+    <p>Every project reflects the same standard — clean, intentional, and built to serve the mission behind it.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-preview">
+          <div class="preview-browser">
+            <div class="preview-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="preview-url">makechristcool.com</span></div>
+            <div class="preview-body mcc-body">
+              <div class="pb-nav"><span><span class="pb-logo-dot"></span><span class="pb-logo-text">MakeChristCool</span></span><span class="pb-nav-links">Vision · Figurines · Story</span></div>
+              <div class="pb-eyebrow">Faith · Hope · Identity</div>
+              <div class="pb-h1">Bringing the Gospel into <em>every corner</em> of their world.</div>
+              <div class="pb-sub">Tangible reminders of hope for the generation that needs them most.</div>
+              <div class="pb-btns"><span class="pb-btn-p">Explore Figurines</span><span class="pb-btn-s">Our Story →</span></div>
+              <div class="pb-cards-row">
+                <div class="pb-mini-card">🕊️<br><small>Peace</small></div>
+                <div class="pb-mini-card">✝️<br><small>Hope</small></div>
+                <div class="pb-mini-card">🎨<br><small>Worth</small></div>
+                <div class="pb-mini-card">🐑<br><small>Connection</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="work-info">
+          <div class="work-tag">Faith · Youth Evangelism · E-commerce</div>
+          <div class="work-name">Make Christ Cool</div>
+          <p class="work-desc">A faith-based ministry site built to reach youth through physical Gospel reminders, a Spotify devotional playlist, and an integrated prayer request form. Designed to meet a generation where they are.</p>
+          <div class="work-details">
+            <div class="work-detail-item"><span class="wd-label">Services</span><span class="wd-val">Website · Prayer Form · E-commerce</span></div>
+            <div class="work-detail-item"><span class="wd-label">Audience</span><span class="wd-val">Youth &amp; Young Adults</span></div>
+          </div>
+          <a href="https://makechristcool.github.io/makechristcool-/" target="_blank" rel="noopener" class="work-link">Visit site →</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-preview">
+          <div class="preview-browser">
+            <div class="preview-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="preview-url">bethlehembuilt.com</span></div>
+            <div class="preview-body bb-body">
+              <div class="pb-nav bb-nav">
+                <div class="bb-logo-mark">
+                  <svg width="20" height="20" viewBox="0 0 88 88" fill="none"><rect width="88" height="88" rx="14" fill="#1A2E4A"/><polygon points="44,22 47,36 60,27 51,39 66,44 51,49 60,61 47,52 44,66 41,52 28,61 37,49 22,44 37,39 28,27 41,36" fill="#B07D2E"/><circle cx="44" cy="44" r="7" fill="#FAF7F0"/><circle cx="44" cy="44" r="3.5" fill="#1A2E4A"/></svg>
+                  <span style="font-size:9px;color:#1A2E4A;font-weight:600;">Bethlehem Built</span>
+                </div>
+                <span class="pb-nav-links" style="color:#7A6B58;">Story · Services · Contact</span>
+              </div>
+              <div style="margin-bottom:10px;">
+                <div class="pb-eyebrow" style="color:#B07D2E;">North Atlanta · Gwinnett County</div>
+                <div class="pb-h1" style="color:#1A2E4A;">Equipping the Church for the <em style="color:#B07D2E;">modern world.</em></div>
+                <div class="pb-sub" style="color:#7A6B58;">Professional websites, streaming, email, and Google presence — set up in days.</div>
+                <div class="pb-btns"><span class="pb-btn-p" style="background:#1A2E4A;">Book a Consultation</span></div>
+              </div>
+              <div class="bb-stats-row">
+                <div class="bb-stat"><strong>8+</strong><small>Years in IT</small></div>
+                <div class="bb-stat-div"></div>
+                <div class="bb-stat"><strong>3–7</strong><small>Days to launch</small></div>
+                <div class="bb-stat-div"></div>
+                <div class="bb-stat"><strong>Local</strong><small>North Atlanta</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="work-info">
+          <div class="work-tag">Brand Identity · Web · Self-Built</div>
+          <div class="work-name">Bethlehem Built</div>
+          <p class="work-desc">Our own brand — designed and built entirely in-house. Custom animated logo, full multi-page website, Formspree contact form, Google Business Profile, and custom domain. Zero agencies, zero templates.</p>
+          <div class="work-details">
+            <div class="work-detail-item"><span class="wd-label">Services</span><span class="wd-val">Brand · Website · GBP · Domain</span></div>
+            <div class="work-detail-item"><span class="wd-label">Audience</span><span class="wd-val">Churches &amp; Small Businesses</span></div>
+          </div>
+          <a href="https://bethlehembuilt.com" target="_blank" rel="noopener" class="work-link">Visit site →</a>
+        </div>
+      </div>
+
+      <div class="work-card work-card-cta">
+        <div class="work-cta-inner">
+          <div class="cta-icon">
+            <svg width="48" height="48" viewBox="0 0 88 88" fill="none"><rect width="88" height="88" rx="16" fill="rgba(176,125,46,0.15)"/><polygon points="44,22 47,36 60,27 51,39 66,44 51,49 60,61 47,52 44,66 41,52 28,61 37,49 22,44 37,39 28,27 41,36" fill="#B07D2E" opacity="0.7"/><circle cx="44" cy="44" r="7" fill="rgba(250,247,240,0.6)"/><circle cx="44" cy="44" r="3.5" fill="#1A2E4A" opacity="0.5"/></svg>
+          </div>
+          <div class="work-tag" style="color:var(--gold-light);">Founding Client Opportunity</div>
+          <div class="work-name" style="color:var(--white);">Your Church.<br>Your Story.</div>
+          <p class="work-desc" style="color:rgba(255,255,255,0.6);">We're accepting one founding church partner at a significantly reduced rate — in exchange for a testimonial and the honor of featuring your ministry here.</p>
+          <div class="cta-perks">
+            <div class="cta-perk">✓ Full Growth Package</div>
+            <div class="cta-perk">✓ Founding client pricing</div>
+            <div class="cta-perk">✓ Priority attention</div>
+            <div class="cta-perk">✓ Permanent feature on this page</div>
+          </div>
+          <a href="/contact.html" class="work-link-cta">Is that you? Let's talk →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <a href="/" class="logo-mark">
+        <svg class="logo-icon" viewBox="0 0 88 88" fill="none">
+          <rect width="88" height="88" rx="16" fill="#243F64"/>
+          <rect x="6" y="6" width="76" height="76" rx="10" fill="none" stroke="#B07D2E" stroke-width="0.7" opacity="0.35"/>
+          <polygon points="44,22 47,36 60,27 51,39 66,44 51,49 60,61 47,52 44,66 41,52 28,61 37,49 22,44 37,39 28,27 41,36" fill="#B07D2E"/>
+          <line x1="44" y1="22" x2="44" y2="9" stroke="#D4A24E" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="44" cy="9" r="4" fill="#D4A24E"/>
+          <line x1="38" y1="9" x2="50" y2="9" stroke="#D4A24E" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <line x1="66" y1="44" x2="79" y2="44" stroke="#D4A24E" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="79" cy="44" r="4" fill="#D4A24E"/>
+          <line x1="79" y1="38" x2="79" y2="50" stroke="#D4A24E" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <line x1="44" y1="66" x2="44" y2="79" stroke="#D4A24E" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="44" cy="79" r="4" fill="#D4A24E"/>
+          <line x1="38" y1="79" x2="50" y2="79" stroke="#D4A24E" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <line x1="22" y1="44" x2="9" y2="44" stroke="#D4A24E" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="9" cy="44" r="4" fill="#D4A24E"/>
+          <line x1="9" y1="38" x2="9" y2="50" stroke="#D4A24E" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <circle cx="44" cy="44" r="7" fill="#FAF7F0"/>
+          <circle cx="44" cy="44" r="3.5" fill="#243F64"/>
+        </svg>
+        <div class="logo-text">
+          <span class="l-top">Bethlehem</span>
+          <span class="l-bottom">Built</span>
+        </div>
+      </a>
+      <p class="footer-tagline">"Equipping the Church for the modern world."</p>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Bethlehem Built · Sugar Hill, GA · (770) 864-4239</span>
+      <span class="footer-verse">Matthew 28:19 — Go therefore and make disciples of all nations.</span>
+    </div>
+  </div>
+</footer>
+<script>document.querySelector('[data-page="work"]').classList.add('active');</script>
+</body>
+</html>

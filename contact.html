@@ -3,44 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bethlehem Built — Equipping the Church for the Modern World</title>
+<title>Contact — Bethlehem Built</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
-.hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; position: relative; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(176,125,46,0.07) 0%, transparent 70%), radial-gradient(ellipse 50% 80% at 10% 80%, rgba(26,46,74,0.06) 0%, transparent 60%); }
-.hero-cross { position: absolute; right: -40px; top: 50%; transform: translateY(-50%); opacity: 0.04; }
-.hero-content { position: relative; z-index: 1; max-width: 720px; }
-.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; animation: fadeUp 0.8s ease both; }
-.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
-.hero h1 { font-family: var(--serif); font-size: clamp(44px, 6vw, 76px); font-weight: 500; line-height: 1.08; color: var(--navy); margin-bottom: 28px; animation: fadeUp 0.8s 0.1s ease both; }
-.hero h1 em { font-style: italic; color: var(--gold); }
-.hero-sub { font-size: 18px; font-weight: 300; color: var(--muted); max-width: 520px; line-height: 1.65; margin-bottom: 44px; animation: fadeUp 0.8s 0.2s ease both; }
-.hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; animation: fadeUp 0.8s 0.3s ease both; }
-.hero-stats { display: flex; gap: 48px; align-items: center; margin-top: 56px; animation: fadeUp 0.8s 0.4s ease both; }
-.hero-stat .s-num { font-family: var(--serif); font-size: 32px; font-weight: 600; color: var(--navy); line-height: 1; }
-.hero-stat .s-label { font-size: 12px; color: var(--muted2); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px; }
-.stat-div { width: 1px; height: 40px; background: var(--cream3); }
-
-/* HOME INTRO STRIPS */
-.home-strips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--cream3); border-top: 1px solid var(--cream3); border-bottom: 1px solid var(--cream3); }
-.home-strip { background: var(--white); padding: 36px 32px; text-decoration: none; transition: background var(--t); display: flex; flex-direction: column; gap: 10px; }
-.home-strip:hover { background: var(--cream2); }
-.hs-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
-.hs-title { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--navy); }
-.hs-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
-.hs-link { font-size: 13px; color: var(--gold); margin-top: 4px; }
-
-@media (max-width: 680px) {
-  .hero { padding: 100px 0 60px; min-height: auto; }
-  .hero-stats { gap: 20px; }
-  .home-strips { grid-template-columns: 1fr; }
-}
+.contact-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; margin-top: 56px; }
+.contact-form-wrap { background: var(--white); border: 1px solid var(--cream3); border-radius: 12px; padding: 40px; }
+.form-title { font-family: var(--serif); font-size: 24px; font-weight: 600; color: var(--navy); margin-bottom: 24px; }
+.fg { margin-bottom: 16px; }
+.fg label { display: block; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.fg input, .fg select, .fg textarea { width: 100%; padding: 11px 14px; border: 1px solid var(--cream3); border-radius: 6px; background: var(--cream); font-family: var(--sans); font-size: 14px; color: var(--text); outline: none; transition: border-color var(--t); -webkit-appearance: none; }
+.fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--gold); background: var(--white); }
+.fg textarea { resize: vertical; min-height: 100px; }
+.fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.btn-sub { width: 100%; padding: 14px; background: var(--navy); color: var(--white); border: none; border-radius: 6px; font-family: var(--sans); font-size: 15px; font-weight: 500; cursor: pointer; transition: background var(--t); margin-top: 6px; }
+.btn-sub:hover { background: var(--navy2); }
+.form-success { display: none; text-align: center; padding: 40px 20px; }
+.form-success .check { font-size: 48px; margin-bottom: 16px; }
+.form-success h3 { font-family: var(--serif); font-size: 24px; color: var(--navy); margin-bottom: 10px; }
+.form-success p { font-size: 14px; color: var(--muted); }
+.c-detail { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--cream3); }
+.c-detail:last-of-type { border-bottom: none; }
+.c-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.c-icon svg { width: 18px; height: 18px; }
+.c-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted2); margin-bottom: 4px; }
+.c-value { font-size: 15px; color: var(--navy); font-weight: 500; text-decoration: none; }
+.c-value:hover { color: var(--gold); }
+.area-box { background: var(--gold-pale); border: 1px solid rgba(176,125,46,0.2); border-radius: 10px; padding: 18px 20px; margin-top: 28px; }
+.area-title { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; font-weight: 500; }
+.area-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { background: var(--white); border: 1px solid rgba(176,125,46,0.25); border-radius: 20px; padding: 4px 12px; font-size: 12px; color: var(--navy); }
+@media (max-width: 900px) { .contact-inner { grid-template-columns: 1fr; gap: 48px; } }
+@media (max-width: 680px) { .contact-form-wrap { padding: 24px 20px; } .fg-row { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
-
 <nav>
   <div class="wrap">
     <div class="nav-inner">
@@ -86,55 +84,65 @@
   </div>
 </nav>
 
-<section class="hero" id="home">
-  <div class="hero-bg"></div>
-  <svg class="hero-cross" width="500" height="700" viewBox="0 0 500 700" fill="none">
-    <rect x="210" y="60" width="80" height="580" rx="8" fill="#1A2E4A"/>
-    <rect x="60" y="210" width="380" height="80" rx="8" fill="#1A2E4A"/>
-  </svg>
+<div class="page-header">
   <div class="wrap">
-    <div class="hero-content">
-      <div class="eyebrow">North Atlanta · Lawrenceville · Gwinnett County</div>
-      <h1>Equipping the Church<br>for the <em>modern world.</em></h1>
-      <p class="hero-sub">Your church deserves a digital presence as strong as your mission. Professional websites, streaming, email, and Google presence — set up in days, not months, by someone who actually shares your faith.</p>
-      <div class="hero-actions">
-        <a href="/contact.html" class="btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-5.99-5.99 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z"/></svg>
-          Book a Free Consultation
-        </a>
-        <a href="/services.html" class="btn-secondary">View services</a>
+    <div class="s-label">Contact</div>
+    <h1>Let's talk about your<br><em>ministry.</em></h1>
+    <p>A free 20-minute consultation is all it takes. No pitch, no pressure — just an honest look at where you are and what's possible.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="contact-inner">
+      <div>
+        <div class="c-detail">
+          <div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#B07D2E" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-5.99-5.99 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z"/></svg></div>
+          <div><div class="c-label">Call or text</div><a href="tel:7708644239" class="c-value">(770) 864-4239</a></div>
+        </div>
+        <div class="c-detail">
+          <div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#B07D2E" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="c-label">Email</div><a href="mailto:lsands.az@gmail.com" class="c-value">lsands.az@gmail.com</a></div>
+        </div>
+        <div class="c-detail">
+          <div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#B07D2E" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="c-label">Based in</div><div class="c-value">Sugar Hill, GA</div></div>
+        </div>
+        <div class="area-box">
+          <div class="area-title">Service area</div>
+          <div class="area-pills">
+            <span class="pill">Lawrenceville</span><span class="pill">Sugar Hill</span><span class="pill">Buford</span>
+            <span class="pill">Suwanee</span><span class="pill">Duluth</span><span class="pill">Gwinnett County</span><span class="pill">North Atlanta</span>
+          </div>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><div class="s-num">8+</div><div class="s-label">Years in IT</div></div>
-        <div class="stat-div"></div>
-        <div class="hero-stat"><div class="s-num">3–7</div><div class="s-label">Days to launch</div></div>
-        <div class="stat-div"></div>
-        <div class="hero-stat"><div class="s-num">Local</div><div class="s-label">North Atlanta based</div></div>
+      <div class="contact-form-wrap">
+        <div id="form-fields">
+          <div class="form-title">Book your free consultation</div>
+          <form action="https://formspree.io/f/mlgvwnww" method="POST" id="consultation-form">
+            <div class="fg-row">
+              <div class="fg"><label>First name</label><input type="text" name="first_name" placeholder="Pastor John" required></div>
+              <div class="fg"><label>Last name</label><input type="text" name="last_name" placeholder="Smith" required></div>
+            </div>
+            <div class="fg"><label>Email</label><input type="email" name="email" placeholder="john@yourministry.org" required></div>
+            <div class="fg"><label>Phone (optional)</label><input type="tel" name="phone" placeholder="(770) 555-0100"></div>
+            <div class="fg">
+              <label>I am a...</label>
+              <select name="client_type"><option value="">Select one</option><option>Church / Ministry</option><option>Small Business</option><option>Non-profit</option><option>Other</option></select>
+            </div>
+            <div class="fg"><label>What do you need help with?</label><textarea name="message" placeholder="Tell me a bit about where you're at — website, streaming, Google listing, email, or something else..."></textarea></div>
+            <button type="submit" class="btn-sub">Send — I'll respond within 24 hours</button>
+          </form>
+        </div>
+        <div class="form-success" id="form-success">
+          <div class="check">✝</div>
+          <h3>Message received!</h3>
+          <p>Thanks for reaching out. Lindsey will be in touch within 24 hours.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
-
-<div class="home-strips">
-  <a href="/story.html" class="home-strip">
-    <div class="hs-label">Our Story</div>
-    <div class="hs-title">Faith meets modern tech</div>
-    <div class="hs-body">8 years in enterprise IT. A conviction to serve the Church. Meet Lindsey Sands.</div>
-    <div class="hs-link">Read our story →</div>
-  </a>
-  <a href="/services.html" class="home-strip">
-    <div class="hs-label">Services</div>
-    <div class="hs-title">Three clear packages</div>
-    <div class="hs-body">From 50 to get found on Google to a full website and streaming setup. No surprises.</div>
-    <div class="hs-link">See what we offer →</div>
-  </a>
-  <a href="/work.html" class="home-strip">
-    <div class="hs-label">Our Work</div>
-    <div class="hs-title">Built with purpose</div>
-    <div class="hs-body">See the sites and ministries we've helped establish their digital presence.</div>
-    <div class="hs-link">View portfolio →</div>
-  </a>
-</div>
 
 <footer>
   <div class="wrap">
@@ -172,9 +180,22 @@
     </div>
   </div>
 </footer>
-
 <script>
-  document.querySelector('.logo-text').style.opacity = '0';
+document.querySelector('[data-page="contact"]').classList.add('active');
+const form = document.getElementById('consultation-form');
+const formFields = document.getElementById('form-fields');
+const formSuccess = document.getElementById('form-success');
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = form.querySelector('.btn-sub');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  try {
+    const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+    if (response.ok) { formFields.style.display = 'none'; formSuccess.style.display = 'block'; }
+    else { btn.textContent = 'Something went wrong — please try again'; btn.disabled = false; }
+  } catch { btn.textContent = 'Something went wrong — please try again'; btn.disabled = false; }
+});
 </script>
 </body>
 </html>
